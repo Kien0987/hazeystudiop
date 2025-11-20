@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* -------------------- RESET -------------------- */
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(to bottom, #ffcee8, #ffeaf5);
+            overflow-x: hidden;
+        }
+
+        img { max-width: 100%; display: block; }
+
+        /* -------------------- HEADER -------------------- */
+        header {
+            width: 100%;
+            position: fixed;
+            top: 0; left: 0;
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            z-index: 999;
+            border-bottom: 1px solid #ffd1e6;
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 30px;
+            color: #d63384;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: #d63384;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+        nav ul li a:hover {
+            color: #9b2d5e;
+        }
+
+        /* Mobile menu */
+        .menu-icon {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        @media(max-width: 768px){
+            nav ul { 
+                position: absolute;
+                top: 70px; right: -100%;
+                background: white;
+                width: 200px;
+                flex-direction: column;
+                padding: 20px;
+                transition: 0.4s;
+                border-radius: 10px;
+            }
+            nav ul.active {
+                right: 10px;
+            }
+            .menu-icon {
+                display: block;
+            }
+        }
+
+        /* -------------------- HERO -------------------- */
+        .hero {
+            padding-top: 120px;
+            text-align: center;
+            padding-bottom: 80px;
+        }
+
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 60px;
+            color: #d63384;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ff9ac8; }
+            to { text-shadow: 0 0 20px #ff64ad; }
+        }
+
+        .hero p {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            background: #d63384;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #a32563;
+        }
+
+        /* -------------------- LỜI TRI ÂN -------------------- */
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Dancing Script';
+            font-size: 45px;
+            color: #d63384;
+            margin-bottom: 20px;
+        }
+
+        .thank-box {
+            font-size: 18px;
+            color: #444;
+            text-align: center;
+            line-height: 1.7;
+            animation: fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* -------------------- CÁC LỜI CHÚC -------------------- */
+        .wish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+            gap: 20px;
+        }
+
+        .wish-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid #ffd9ec;
+        }
+
+        .wish-card:hover {
+            transform: scale(1.05);
+            border-color: #ff99c8;
+        }
+
+        /* Popup modal */
+        .modal {
+            position: fixed; 
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0; visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .modal.active {
+            opacity: 1; visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 350px;
+        }
+
+        /* -------------------- GALLERY -------------------- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* -------------------- FORM -------------------- */
+        .form-box {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        input, textarea {
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ffd1e6;
+        }
+
+        textarea { height: 120px; }
+
+        /* -------------------- FOOTER -------------------- */
+        footer {
+            background: #f7d2e7;
+            padding: 25px;
+            text-align: center;
+            color: #7e2a55;
+            margin-top: 50px;
+        }
+
+        /* -------------------- HOA RƠI -------------------- */
+        .petal {
+            position: fixed;
+            top: -10px;
+            width: 15px;
+            height: 15px;
+            background: pink;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall 6s linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>Chúc Mừng Ngày Nhà Giáo Việt Nam 20/11</h1>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <nav>
+        <ul id="menu">
+            <li><a href="#hero">Trang chủ</a></li>
+            <li><a href="#thank">Lời tri ân</a></li>
+            <li><a href="#wishes">Lời chúc</a></li>
+            <li><a href="#gallery">Hình ảnh</a></li>
+            <li><a href="#form">Gửi lời chúc</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+    <h2 class="hero-title">Tri Ân Thầy Cô – 20/11</h2>
+    <p>Cảm ơn thầy cô vì đã chắp cánh cho những ước mơ.</p>
+    <a class="btn" href="#wishes">Nhận lời chúc</a>
+</section>
+
+<!-- LỜI TRI ÂN -->
+<section id="thank">
+    <h2 class="section-title">Lời Tri Ân</h2>
+    <p class="thank-box">
+        Nhân ngày Nhà Giáo Việt Nam 20/11,<br>
+        xin gửi đến thầy cô những lời cảm ơn sâu sắc nhất.<br>
+        Cảm ơn vì những bài học quý giá –<br>
+        vì sự tận tâm, yêu thương và hết lòng vì học trò.
+    </p>
+</section>
+
+<!-- CÁC LỜI CHÚC -->
+<section id="wishes">
+    <h2 class="section-title">Những Lời Chúc Ý Nghĩa</h2>
+
+    <div class="wish-grid">
+        <div class="wish-card" onclick="openModal('Chúc thầy cô luôn mạnh khỏe, hạnh phúc và thành công!')">🌸 group 1</div>
+        <div class="wish-card" onclick="openModal('Cảm ơn thầy cô đã dẫn dắt chúng em từng ngày!')">🌼 group 2</div>
+        <div class="wish-card" onclick="openModal('Kính chúc thầy cô luôn giữ mãi ngọn lửa nhiệt huyết!')">💗 group 3</div>
+        <div class="wish-card" onclick="openModal('Tri ân thầy cô – người lái đò thầm lặng!')">🌷 group 4</div>
+    </div>
+</section>
+
+<!-- POPUP -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <p id="modalText"></p>
+        <br>
+        <button class="btn" onclick="closeModal()">Đóng</button>
+    </div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+    <h2 class="section-title">Hình Ảnh Tri Ân</h2>
+    <div class="gallery">
+        <img src="c:\Users\HAHAHA\Downloads\gen-h-z7243405998478_25a2743c030f18c0714945103caf0315.jpg">
+        <img src="c:\Users\HAHAHA\Downloads\gen-h-z7242244394152_a2b004b7a7d3770ea47b975af7d07e3b.jpg">
+        <img src="c:\Users\HAHAHA\Downloads\gen-h-z7242244396300_34d114226c3c1eac99dfd75f2349ae77.jpg">
+        <img src="c:\Users\HAHAHA\Downloads\gen-n-z7243405725338_ab6f51f1019b036dba03df726a50033e.jpg">
+        <img src="c:\Users\HAHAHA\Downloads\gen-h-z7243405772068_427966880117df770ad61e20b3f9b120.jpg">
+        <img src="c:\Users\HAHAHA\Downloads\gen-h-z7243405611435_ebd71b95c5096bd1baadae76b4c25f05.jpg">
+        <img src="c:\Users\HAHAHA\Downloads\gen-h-z7243405593162_70d2448211190153721e354191b9caf4.jpg">
+        <img src="c:\Users\HAHAHA\Downloads\gen-h-z7243405747793_9f89f8468916ae4e8de2a0d742ddf114.jpg">
+    </div>
+</section>
+
+<!-- FORM -->
+<section id="form">
+    <h2 class="section-title">Gửi Lời Chúc</h2>
+    <div class="form-box">
+        <input id="name" placeholder="Tên của bạn...">
+        <textarea id="msg" placeholder="Lời chúc gửi đến thầy cô..."></textarea>
+        <button class="btn" onclick="sendMsg()">Gửi lời chúc</button>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    Cảm ơn thầy cô vì tất cả! <br>
+    © 2025 – Tri Ân Thầy Cô 20/11
+</footer>
+
+<script>
+/* MENU MOBILE */
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+
+/* MODAL */
+function openModal(text){
+    document.getElementById("modal").classList.add("active");
+    document.getElementById("modalText").innerText = text;
+}
+function closeModal(){
+    document.getElementById("modal").classList.remove("active");
+}
+
+/* FORM – LOCALSTORAGE */
+function sendMsg(){
+    let name = document.getElementById("name").value;
+    let msg = document.getElementById("msg").value;
+
+    if(!name || !msg){
+        alert("Vui lòng nhập đầy đủ tên và lời chúc!");
+        return;
+    }
+    alert("Đã gửi lời chúc đến thầy cô! ❤️");
+    localStorage.setItem("wish_"+name, msg);
+
+    document.getElementById("name").value = "";
+    document.getElementById("msg").value = "";
+}
+
+/* HIỆU ỨNG HOA RƠI */
+function createPetal(){
+    const petal = document.createElement("div");
+    petal.className = "petal";
+    petal.style.left = Math.random()*100 + "%";
+    petal.style.background = ["#ff99c8","#ffc8dd","#ffafcc"][Math.floor(Math.random()*3)];
+    petal.style.animationDuration = (5 + Math.random()*5) + "s";
+
+    document.body.appendChild(petal);
+    setTimeout(()=>petal.remove(), 10000);
+}
+setInterval(createPetal, 300);
+</script>
